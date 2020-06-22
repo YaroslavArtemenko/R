@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "cat(\"Enter length random array:\")\nN <- scan(n=1)\na <- runif(N)\n\nnum_interval <- floor(3.32*log10(N)+1)\nlist_interval <- seq(0,1, length=num_interval)\nlist_times_interval <- array(0, num_interval-1)\n\nfor (i in a){\n  for (j in 1:(num_interval-1)){\n    if ( list_interval[j] < i & i < list_interval[j+1]){\n      list_times_interval[j] = list_times_interval[j] + 1\n    }\n  }\n}\n\nhist(a)\nlist_times_interval= list_times_interval/N\n\nlist_must_interval <- array(1/num_interval, num_interval-1)\nxi <- sum(((list_must_interval-list_times_interval)^2)/list_must_interval)\n\ncat(\"\\nValue xi^2: \", xi, \"\\n\")\ncat(\"Distribution is uniform: \",qchisq(p = 0.95, df = length(list_times_interval)-3), \"\\n\\n\")\ncat(\"P-value: 0.95\\nDf :\", length(list_times_interval)-1,\"\\n\\n\")\n\n",
+    "created" : 1511734874687.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2361217978",
+    "id" : "900C0F2F",
+    "lastKnownWriteTime" : 1511169879,
+    "last_content_update" : 1511169879,
+    "path" : "~/5 семестр/ВП/random_processes/lab1/task1.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,41 @@
+#part-1
+lambda=3
+intervals=rexp(1000,lambda)
+hist(intervals, col="lightgreen")
+
+#part2
+k=5
+lambda=3
+process_vals = rexp(7000, lambda)
+every_k_time = c()
+for (i in 1:1000) {
+  k_sum = 0;
+  lower_lim = (i - 1) * k + 1;
+  upper_lim = lower_lim + 5;
+  for (j in lower_lim:upper_lim) {
+    k_sum = k_sum + process_vals[j]
+  }
+  every_k_time[i] = k_sum;
+}
+hist(every_k_time, col="yellow")
+
+#part3
+n=100
+mid_time = n * 1 / lambda;
+is_done = 0;
+time_values = c();
+for (i in 1:1000) {
+  current_time = 0;
+  for (j in 1:n) {
+    current_time = current_time + rexp(1, lambda);
+  }
+  time_values[i] = current_time;
+  if (current_time <= mid_time) {
+    is_done[i] = 1;
+  }
+  else {
+    is_done[i] = 0;
+  }
+}
+hist(time_values, col="orange");
+hist(is_done, col="red")

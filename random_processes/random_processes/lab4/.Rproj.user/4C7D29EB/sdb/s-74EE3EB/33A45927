@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\ncat(\"Enter length random array:\")\nN <- scan(n=1)\ncat(\"Enter number of iterations:\")\nM <- scan(n=1)\n\nh <- array(0, M)\nfor (i in 1:M){\n  b <- runif(N)\n  h[i] = max(b)\n}\n\nhist(h)",
+    "created" : 1511734917536.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1321651164",
+    "id" : "33A45927",
+    "lastKnownWriteTime" : 1508780638,
+    "last_content_update" : 1511734962600,
+    "path" : "~/5 семестр/ВП/random_processes/lab1/task3.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

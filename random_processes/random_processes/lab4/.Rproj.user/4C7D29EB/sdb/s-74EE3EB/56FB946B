@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "polynomial_integral <- function(x) x^7+x^3+x\n\ntrigonometric_integral <- function(x) 5*cos(pi*x)\n\ninfinite_integral <- function(x) 1/((x+1)^2*sqrt(x))\n\n\n\n\nget_integral_limit <- function(n){\n  l_lim <- c(0, 0, 10^-3)\n  r_lim <- c(2, pi, 10^3)\n  for(i in 1:3){\n    if(n == i){\n      bottom_limit <- l_lim[i]\n      top_limit <- r_lim[i]\n      return(c(bottom_limit, top_limit))\n    }\n  }\n}\n\nintegral_counting <- function(n, func){\n  cat(\"Enter length random array: \")\n  \n  N <- scan(n=1)\n  integral_data <- get_integral_limit(n)\n  \n  min_func <- min(func(seq(integral_data[1], integral_data[2], length=N)))\n  max_func <- max(func(seq(integral_data[1], integral_data[2],length=N)))\n  \n  a <- runif(N, min=integral_data[1], max=integral_data[2])\n  b <- runif(N, min=min_func, max=max_func)\n  \n  num_integral_positive <- b >= 0 & b <= func(a)\n  num_integral_negative <- b <= 0 & b >= func(a)\n  num_integral <- sum(num_integral_positive)-sum(num_integral_negative)\n  \n  coll_intrgral <- num_integral/N\n  \n  integral <- coll_intrgral*(max_func-min_func)*integral_data[2]\n  cat(\"\\nCalculated integral: \", integral, \"\\n\\n\\n\")\n  \n}\n\nwhile(TRUE){\n  for(i in 1:3){\n    cat(\"Enter\", i, \"to count\", i, \"integral: \\n\")\n  }\n  \n  cat(\"Enter 0 to exit task\\n\")\n  choice_integral <- scan(n=1)\n  \n  if(choice_integral==1){\n    integral_counting(choice_integral, polynomial_integral)\n  }\n  else if(choice_integral==2){\n    integral_counting(choice_integral, trigonometric_integral)    \n  }\n  else if(choice_integral==3){\n    integral_counting(choice_integral, infinite_integral)\n  }\n  else if(choice_integral==0){\n    break\n  }\n}",
+    "created" : 1511732405438.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "609275018",
+    "id" : "56FB946B",
+    "lastKnownWriteTime" : 1511735329,
+    "last_content_update" : 1511735329572,
+    "path" : "~/5 семестр/ВП/random_processes/lab1/task4.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

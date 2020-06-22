@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(nortest)\n\n\nksi_1 <- function(N){\n  a <- runif(N)\n  b <- runif(N)\n  ksi <- array(0, N)\n  for(i in 1:N){\n    ksi[i] = sqrt(-2*log(a[i]))*sin(2*pi*b[i])\n  }\n  return(ksi)\n}\n\nksi_2 <- function(N){\n  a <- runif(N)\n  b <- runif(N)\n  ksi <- array(0, N)\n  for(i in 1:N){\n    ksi[i] = sqrt(-2*log(a[i]))*cos(2*pi*b[i])\n  }\n  return(ksi)\n}\n\nksi_f <- function(N){\n  a <- runif(N)\n  b <- runif(N)\n  ksi <- array(0, 2*N)\n  for(i in 1:N){\n    ksi[2*i-1] = sqrt(-2*log(a[i]))*sin(2*pi*b[i])\n    ksi[2*i] = sqrt(-2*log(a[i]))*cos(2*pi*b[i])\n  }\n  return(ksi)\n}\n\nksi_i <- function(N, n){\n  ksi <- array(0, N)\n  for(i in 1:N){\n    for(j in 1:n){\n      ksi[i] = ksi[i] + (runif(1)-0.5)\n    }\n    ksi[i] = sqrt(12/n)*ksi[i]\n  }\n  return(ksi)\n}\n\ncat(\"Enter lenght array\")\nN <- scan(n=1)\n\na_1 <- ksi_1(N)\na_2 <- ksi_2(N)\na_f <- ksi_f(N)\n\nhist(a_1)\nhist(a_2)\nhist(a_f)\n\nprint(pearson.test(a_1))\nprint(pearson.test(a_2))\nprint(pearson.test(a_f))\n\nfor(i in c(3,12,48)){\n  a_i <- ksi_i(N, i)\n  print(pearson.test(a_i))\n  hist(a_i)\n}\n\n",
+    "created" : 1510239929596.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3890109315",
+    "id" : "E231D33F",
+    "lastKnownWriteTime" : 1510061200,
+    "last_content_update" : 1510061200,
+    "path" : "~/5 семестр/ВП/random_processes/lab2/task2.R",
+    "project_path" : "task2.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

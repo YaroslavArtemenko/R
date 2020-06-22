@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\ncat(\"Enter dimension of matrix\")\ndim <- scan(n=1)\n\ncat(\"Enter quantity of implementations\")\nN <- scan(n=1)\n\ncat(\"Enter quantity of steps\")\nsteps <- scan(n=1)\n\ncat(\"Enter matrix\")\nP <- matrix(0, ncol = dim, nrow = dim)\nfor(i in 1:dim){\n  P[i,] <- scan(n=dim)\n}\n\ncat(\"Enter vector\")\np0 <- scan(n=dim)\n\nalfa <- function(N,steps){\n  arr <- matrix(0, ncol=steps-1, nrow=N)\n  for(i in 1:N){\n    for(j in 1:steps-1){\n      arr[i,j] <- runif(1)\n    }\n  }\n  return(arr)\n}\n\n\nimplementations <- function(arr,P, N, n){\n  impl <- matrix(0, ncol=n, nrow=N)\n  \n  for(i in 1:N){\n    \n    position = 1\n    impl[i,1]=1\n    \n    for(j in 2:n){\n      sumP = 0\n      l=1\n      while(impl[i,j]<1){\n        sumP = sumP + P[position,l]\n        if(arr[i,j-1] < sumP){\n          impl[i,j] = l\n          position = l\n        }\n        l = l+1 \n        \n      }\n    }\n  }\n  return(impl)\n}\n\n\nx<-function(impl, N, n){\n  x<-matrix(0, nrow=dim, ncol=1)\n  for(i in 1:N){\n    for(j in 1:dim){\n      if (impl[i,n] == j) {\n        x[j]=x[j]+1/N\n      }\n    }\n  }\n  return(x) \n}\n\nalfa <-alfa(N, steps)\nimplementations <- implementations(alfa,P,N, steps)\nx<-x(implementations, N, steps)\n\nPn <-P\nfor(i in 2:steps){\n  Pn = Pn%*%P\n}\n\n\n\n\npn = p0%*%Pn\n",
+    "created" : 1511719932087.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4108926912",
+    "id" : "88C1E91",
+    "lastKnownWriteTime" : 1511726477,
+    "last_content_update" : 1511726477552,
+    "path" : "d:/Documents/5 семестр/ВП/random_processes/lab4/task1.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

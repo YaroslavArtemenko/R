@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(nortest)\n\n\ncat(\"Enter lenght array\")\nN <- scan(n=1)\n\na <- rnorm(N)\n\nprint(ad.test(a))\nprint(cvm.test(a))\nprint(lillie.test(a))\nprint(pearson.test(a))\nprint(sf.test(a))#3-5000\n\nhist(a)\n",
+    "created" : 1510239297210.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1710445538",
+    "id" : "FE83919",
+    "lastKnownWriteTime" : 1510239850,
+    "last_content_update" : 1510239850230,
+    "path" : "~/5 семестр/ВП/random_processes/lab2/task1.R",
+    "project_path" : "task1.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

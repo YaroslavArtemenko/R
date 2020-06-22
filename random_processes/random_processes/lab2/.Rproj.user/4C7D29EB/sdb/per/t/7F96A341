@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(ggplot2)\nlibrary(reshape2)\n\n\nN <- 1000\n\nksi_1 <- function(t,N){\n  sum_ksi <- 0\n  for(i in 1:N){\n    a <- rnorm(1, 0, 1/(1+pi*i**2))\n    b <- rnorm(1, 0, 1/(1+pi*i**2)) \n    sum_ksi = sum_ksi + cos(i*pi*t) * a + sin(i*pi*t) * b\n  }\n  return(sum_ksi)\n}\n\nksi_2 <- function(t,N){\n  sum_ksi <- 0\n  for(i in 1:N){\n    a <- rnorm(1, 0, 1/(1+pi*i**2))\n    b <- rnorm(1, 0, 1/(1+pi*i**2))\n    lambda_1 <- runif(1,min=i*pi,max=(i+1)*pi)\n    lambda_2 <- runif(1,min=i*pi,max=(i+1)*pi)\n    sum_ksi = sum_ksi + cos(lambda_1*t) * a + sin(lambda_2*t) * b\n  }\n  return(sum_ksi)\n}\n\ncat('Enter number of implementations: ')\nnum_implementations <- scan(n=1)\ncat('Entet number of breakdowns: ')\nlen = scan(n=1)\n\ngaus_1 <- matrix(0, ncol = 1+num_implementations, nrow=len)\ngaus_2 <- matrix(0, ncol = 1+num_implementations, nrow=len)\ngaus_mean_a <- matrix(0, ncol = 2, nrow=len)\ngaus_mean_b<- matrix(0, ncol = 2, nrow=len)\n\nt <- seq(0, pi, length=len)\ngaus_1[,1] = t\ngaus_2[,1] = t\ngaus_mean_a[,1] = t\ngaus_mean_b[,1] = t\n\nfor(j in 1:num_implementations-1){\n  for(i in 1:len){\n    gaus_1[i, (2+j)] = ksi_1(t[i], N)\n  }\n  for(i in 1:len){\n    gaus_2[i, (2+j)] = ksi_2(t[i], N)\n  }\n}\n\nfor(i in 1:len){\n  a <- gaus_1[i,]\n  b <- gaus_2[i,]\n  gaus_mean_a[i, 2] = mean(a[2:length(a)])\n  gaus_mean_b[i, 2] = mean(b[2:length(b)])\n}\n\na <- data.frame(gaus_1)\na1 <- melt(data = a, id.vars = \"X1\")\n\nb <- data.frame(gaus_2)\nb1 <- melt(data = b, id.vars = \"X1\")\n\na_mean <- data.frame(gaus_mean_a)\na1_mean <- melt(data = a_mean, id.vars = \"X1\")\n\nb_mean <- data.frame(gaus_mean_b)\nb1_mean <- melt(data = b_mean, id.vars = \"X1\" )\n\nggplot(data = a1, aes(x = X1, y = value, colour = variable)) + geom_line()\nggplot(data = b1, aes(x = X1, y = value, colour = variable)) + geom_line()\nggplot(data = a1_mean, aes(x = X1, y = value, colour = variable)) + geom_line()\nggplot(data = b1_mean, aes(x = X1, y = value, colour = variable)) + geom_line()\n\n\n",
+    "created" : 1510239934150.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1029557444",
+    "id" : "7F96A341",
+    "lastKnownWriteTime" : 1510061200,
+    "last_content_update" : 1510061200,
+    "path" : "~/5 семестр/ВП/random_processes/lab2/task3.R",
+    "project_path" : "task3.R",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

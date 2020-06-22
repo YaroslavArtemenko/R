@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\ncat(\"Enter dimension of matrix\")\ndim <- scan(n=1)\n\ncat(\"Enter quantity of implementations\")\nN <- scan(n=1)\n\ncat(\"Enter quantity of steps\")\nsteps <- scan(n=1)\n\ncat(\"Enter matrix\")\nP <- matrix(0, ncol = dim, nrow = dim)\nfor(i in 1:dim){\n  P[i,] <- scan(n=dim)\n}\ncat(\"Enter vector\")\np0 <- scan(n=dim)",
+    "created" : 1511721950425.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4200597697",
+    "id" : "C213D2B0",
+    "lastKnownWriteTime" : 1511726477,
+    "last_content_update" : 1511726477601,
+    "path" : "d:/Documents/5 семестр/ВП/random_processes/lab4/task2.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
